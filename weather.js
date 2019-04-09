@@ -24,7 +24,6 @@ function msToMPH(ms){
 }
 
 function formatResponse(data){
-  console.log(data);
   let conditions = ""
   if(data.weather.length>1){
       for(var i = 0; i < data.weather.length; i++ ){
@@ -35,16 +34,12 @@ function formatResponse(data){
        }
      } else {
       conditions += data.weather[0].main;
-
   }
-
   let out = `<h2>Current Condtions for ${data.name}</h2>
   <p><strong>Temperature:</strong> ${Math.round(kelvinToFahrenheit(data.main.temp))}F<br/>
   <p><strong>Humidity:</strong> ${data.main.humidity}%<br/>
   <p><strong>Pressure:</strong> ${data.main.pressure}mb<br/>
   <p><strong>Wind:</strong> ${data.wind.deg} degrees at ${msToMPH(Math.round(data.wind.speed))} MPH<br/>
   <p>${conditions}</p>`
-
-
   return(out);
 }
